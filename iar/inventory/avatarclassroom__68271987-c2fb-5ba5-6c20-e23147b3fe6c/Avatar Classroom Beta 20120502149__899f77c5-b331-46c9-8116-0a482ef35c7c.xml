@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-16"?>
+<InventoryItem>
+  <Name>Avatar Classroom Beta 20120502149</Name>
+  <ID>899f77c5-b331-46c9-8116-0a482ef35c7c</ID>
+  <InvType>6</InvType>
+  <CreatorUUID>ospa:n=Avatar Classroom</CreatorUUID>
+  <CreationDate>1336028375</CreationDate>
+  <Owner>a819d3a6-0cf5-445c-94a9-c5ba84285bb1</Owner>
+  <Description>oink</Description>
+  <AssetType>6</AssetType>
+  <AssetID>f387e59a-e18d-47b6-87ed-bd99dfb4a4d8</AssetID>
+  <SaleType>0</SaleType>
+  <SalePrice>0</SalePrice>
+  <BasePermissions>581632</BasePermissions>
+  <CurrentPermissions>581632</CurrentPermissions>
+  <EveryOnePermissions>0</EveryOnePermissions>
+  <NextPermissions>581632</NextPermissions>
+  <Flags>0</Flags>
+  <GroupID>00000000-0000-0000-0000-000000000000</GroupID>
+  <GroupOwned>False</GroupOwned>
+</InventoryItem>
