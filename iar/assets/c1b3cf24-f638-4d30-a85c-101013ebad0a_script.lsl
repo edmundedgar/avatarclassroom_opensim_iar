@@ -1,56 +1,73 @@
 /*
-*  Part of the Sloodle project (www.sloodle.org)
-*
+* btn_connect_hud.lsl
+* Part of the Sloodle project (www.sloodle.org)
+* 
 *  Copyright (c) 2011-06 contributors (see below)
 *  Released under the GNU GPL v3
-*  -------------------------------------------
-*
-*  This program is free software: you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation, either version 3 of the License, or
-*  (at your option) any later version.
-*
-*
-*  This program is distributed in the hope that it will be useful,
-*  but WITHOUT ANY WARRANTY; without even the implied warranty of
-*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-*  GNU General Public License for more details.
-*  You should have received a copy of the GNU General Public License
-*  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*
-*  All scripts must maintain this copyrite information, including the contributer information listed
-*
-*  Contributors:
-*   Paul Preibisch
-*   Edmund Edgar
-*
-*  DESCRIPTION
+* 
+* Contributors:
+*  Edmund Edgar
+*  Paul Preibisch
 */
-
 
 string view_url;
 string admin_url;
 string sloodleserverroot = "";
 string paramstr;
-integer SLOODLE_CHANNEL_OPEN_IN_BROWSER= -1639277000;
+integer SLOODLE_CHANNEL_OBJECT_DIALOG = -3857343;
+integer SLOODLE_CHANNEL_SCOREBOARD_SHARED_MEDIA_SET_ADMIN_URL_CHANNEL= -1639271128; // This is the channel that the scoreboard shouts out its admin URL
+integer SLOODLE_CHANNEL_SCOREBOARD_SHARED_MEDIA_CHANGE_ADMIN_URL_CHANNEL= -1639271129; // This is the channel that the scoreboard shouts out its admin URL WHEN It has changed due to a region event (lost its url etc)
+integer SLOODLE_SCOREBOARD_CONNECT_HUD= -1639271130; // channel which gets sent a linked message by the connect a hud button when it is touched.
+sloodle_handle_command(string str) 
+{
+       // llOwnerSay(str);
+    list bits = llParseString2List(str,["|"],[]);
+    integer numbits = llGetListLength(bits);
+    string name = llList2String(bits,0);
+    string value1 = "";
+    string value2 = "";
 
+    if (numbits > 1) value1 = llList2String(bits,1); 
+    if (numbits > 2) value2 = llList2String(bits,2);
+    
+    if (name == "set:sloodleserverroot") sloodleserverroot = value1;
+}
 
-default{
+default
+{
     on_rez(integer start_param) {
         llResetScript();
     }
-touch_start( integer total_number){
-    integer j;
-    for (j=0;j<total_number;j++){
-        if (llDetectedKey(j)!=llGetOwner())return;
-        llMessageLinked(LINK_ALL_OTHERS, SLOODLE_CHANNEL_OPEN_IN_BROWSER, "", llDetectedKey(j));    
-    }        
-    
-   
+    state_entry() {
+          paramstr = "&sloodleobjuuid=" + (string)llGetKey();
+        view_url= sloodleserverroot+"/mod/sloodle/mod/scoreboard-1.0/shared_media/index.php?" + paramstr;
+        admin_url =  sloodleserverroot+"/mod/sloodle/mod/scoreboard-1.0/shared_media/index.php?" + paramstr + "&mode=admin";
         
+    
+    }
+ 
+    link_message(integer sender_num, integer num, string str, key id) {
+     if (num == SLOODLE_CHANNEL_OBJECT_DIALOG) {
+            // Split the message into lines
+            list lines = llParseString2List(str, ["\n"], []);
+            integer numlines = llGetListLength(lines);
+            integer i = 0;
+
+            for (i=0; i < numlines; i++) {
+                sloodle_handle_command(llList2String(lines, i));
+            }
+     }
+    
+    }
+touch_start( integer total_number)
+    {
+        if (llDetectedKey(0)!=llGetOwner())return;
+        llMessageLinked(LINK_ALL_OTHERS, SLOODLE_SCOREBOARD_CONNECT_HUD, "", llDetectedKey(0));
+   //  llOwnerSay("Connecting HUD "+(string)SLOODLE_SCOREBOARD_CONNECT_HUD);
+        llTriggerSound("SND_TRANSMIT_SCOREBOARD_ID_TO_HUD", 1);
     }
 }
 
 
 // Please leave the following line intact to show where the script lives in Subversion:
-// SLOODLE LSL Script Subversion Location: mod/scoreboard-1.0/sloodle_connect_button.lsl
+// SLOODLE LSL Script Subversion Location: mod/scoreboard-1.0/sloodle_connect_button.lsl 
