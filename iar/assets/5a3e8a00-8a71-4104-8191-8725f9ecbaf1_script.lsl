@@ -36,15 +36,15 @@ integer SLOODLE_LOAD_CURRENT_URL= -1639271137; //send message to shared media to
 
 default {
     on_rez(integer start_param) {
-        llResetScript(); 
+        llResetScript();
     }
     state_entry() {
     }
    touch_start(integer d){
-
-
+              
+             
               integer j;
-
+              
               for (j=0;j<d;j++){
                   if (llDetectedKey(j)!=llGetOwner()) return;
                    llTriggerSound("click", 1.0);//
@@ -52,7 +52,7 @@ default {
               }
   }//TOUCH
 }//default
-
+        
 
 // Please leave the following line intact to show where the script lives in Subversion:
-// SLOODLE LSL Script Subversion Location: mod/set-1.0/sloodle_open_in_browser.lsl
+// SLOODLE LSL Script Subversion Location: mod/set-1.0/sloodle_open_in_browser.lsl 
