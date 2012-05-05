@@ -32,7 +32,7 @@ default
     }
     touch_start(integer total_number)  
     { 
-       // if(llDetectedKey(0) == llGetOwner())
+       // if(llDetectedKey(0) == llGetOwner()) 
         integer j=0;
         for (j=0;j<total_number;j++){
             if (llDetectedKey(j)!=llGetOwner()){
@@ -40,14 +40,16 @@ default
                 return;
             }
         }
-        
-        if (open==TRUE){ 
+         vector theRot = llRot2Euler(llGetLocalRot());
+        float theRotZ = theRot.z*RAD_TO_DEG;
+        //the reason we are comparing to -80 instead of -90 is because opensim and sl have different precision for rotations, 90 would probably be ok, but lets be safe!
+        if (theRotZ<=-80){ 
             llSetLocalRot(llEuler2Rot( <0, 0, 45 * DEG_TO_RAD> ));
             llMessageLinked(LINK_ALL_OTHERS,SLOODLE_CHANNEL_SET_SIMPLE_DOOR_CLOSED,"",NULL_KEY);  
             llTriggerSound("open",1.0);     
             llTriggerSound("powerup",1.0); 
             llMessageLinked(LINK_SET, -99, "turn glow on", NULL_KEY);
-            open = FALSE;             
+                       
         } else { 
             llMessageLinked(LINK_ALL_OTHERS,SLOODLE_CHANNEL_SET_SIMPLE_DOOR_OPEN,"",NULL_KEY);   
            // llSetPos( llGetRootPosition() );
@@ -55,7 +57,7 @@ default
            llTriggerSound("powerdown",1.0); 
             llSetLocalRot(llEuler2Rot( <0, 0, 270 * DEG_TO_RAD> ));   open = TRUE; 
             llMessageLinked(LINK_SET, -99, "turn glow off", NULL_KEY);
-            open=TRUE;
+          
         } 
         
     }
