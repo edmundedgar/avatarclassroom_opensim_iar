@@ -2,7 +2,7 @@
 // The line above should be left blank to avoid script errors in OpenSim.
 
 /*********************************************
-*  Copyrght (c) 2012 various contributors (see below)
+*  Copyright (c) 2012 various contributors (see below)
 *  Released under the GNU GPL 3.0
 *  This script can be used in your scripts, but you must include this copyright header as per the GPL Licence
 *  For more information about GPL 3.0 - see: http://www.gnu.org/copyleft/gpl.html
@@ -190,3 +190,4 @@ state ready {
 
 // Please leave the following line intact to show where the script lives in Subversion:
 // SLOODLE LSL Script Subversion Location: mod/set-1.0/sloodle_rez_status_confirmer.lsl
+

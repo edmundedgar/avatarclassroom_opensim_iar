@@ -107,7 +107,7 @@ default
             // If we've got all our data AND reached the end of the configuration data, then move on
             if (eof == TRUE) {
                 if (isconfigured == TRUE) {
-                   // sloodle_translation_request(SLOODLE_TRANSLATE_SAY, [0], "configurationreceived", [], NULL_KEY, "");
+                    sloodle_translation_request(SLOODLE_TRANSLATE_SAY, [0], "configurationreceived", [], NULL_KEY, "");
                      state ready;
                 } else {
                     // Go all configuration but, it's not complete... request reconfiguration
@@ -159,10 +159,6 @@ state ready {
 //llOwnerSay("requested config with body "+body); 
           httpchat = llHTTPRequest(sloodleserverroot + SLOODLE_HTTP_IN_REQUEST_LINKER, [HTTP_METHOD, "POST", HTTP_MIMETYPE, "application/x-www-form-urlencoded"], body);    
    }
-
-    /*
-    // Edmund Edgar, 2012-05-08: There's no situation where we can give useful feedback without drowning the user, 
-    // ...so we'll just ignore the response and hope everything worked.
     http_response(key request_id, integer status, list metadata, string body) {
         // Split the data up into lines
         list lines = llParseStringKeepNulls(body, ["\n"], []);  
@@ -187,9 +183,10 @@ state ready {
             } else {
                 llOwnerSay("Unknown Error: "+(string)statuscode+" "+llKey2Name(objKey)); 
             }
-        }        
+        }
+
+        
     }      
-    */
 
     // allow for reconfiguration without resetting
      link_message( integer sender_num, integer num, string str, key id)
