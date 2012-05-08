@@ -107,7 +107,7 @@ default
             // If we've got all our data AND reached the end of the configuration data, then move on
             if (eof == TRUE) {
                 if (isconfigured == TRUE) {
-                    sloodle_translation_request(SLOODLE_TRANSLATE_SAY, [0], "configurationreceived", [], NULL_KEY, "");
+                   // sloodle_translation_request(SLOODLE_TRANSLATE_SAY, [0], "configurationreceived", [], NULL_KEY, "");
                      state ready;
                 } else {
                     // Go all configuration but, it's not complete... request reconfiguration

@@ -246,7 +246,7 @@ default{
     }
  state_entry() {
          myOwnerKey = llGetOwner();
-         llOwnerSay("Owner set to: " + llKey2Name(llGetOwner())+ " with UUID: " + (string)llGetOwner());
+        // llOwnerSay("Owner set to: " + llKey2Name(llGetOwner())+ " with UUID: " + (string)llGetOwner());
          reset=FALSE; //used in the last state - if someone deletes the sloodle_presenter_texture, we set a timer, so need to distinguish in timer event, what to do - ie: was the timer set because the texture was deleted? then set reset to TRUE. 
          state initialize; 
          
@@ -258,7 +258,7 @@ state initialize
 {
 
     on_rez(integer start_param) {  
-        llOwnerSay("Reseting...");  
+       // llOwnerSay("Reseting...");  
         myOwnerKey = llGetOwner();
         llResetScript();
                   

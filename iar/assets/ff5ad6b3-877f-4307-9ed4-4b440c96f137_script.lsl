@@ -236,6 +236,10 @@ state ask_for_site {
         }
     }
 
+    on_rez(integer start_param) {
+        llResetScript();
+    }    
+        
 }
     
 state got_site_url {

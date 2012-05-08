@@ -120,6 +120,13 @@ state ready {
         list statusfields = llParseStringKeepNulls( llList2String(lines,0), ["|"], [] );
         // Get the statuscode
         integer statuscode = llList2Integer(statusfields,0);
+        float refreshseconds = 60;
+       // llOwnerSay(body);
+        if (llGetListLength(statusfields) >= 12) {
+            if (llList2Float(statusfields,12) > 0) {
+                refreshseconds = llList2Float(statusfields,12);
+            }
+        }
 
         string replybody = "sloodlecontrollerid=" + (string)sloodlecontrollerid;
         replybody += "&sloodlepwd=" + sloodlepwd; 
@@ -140,7 +147,7 @@ state ready {
 
         reporthttp = llHTTPRequest(sloodleserverroot + SLOODLE_CONFIRM_ACTIVE_OBJECTS_LINKER, [HTTP_METHOD, "POST", HTTP_MIMETYPE, "application/x-www-form-urlencoded"], replybody );
        // llOwnerSay("requestiong " +sloodleserverroot + SLOODLE_CONFIRM_ACTIVE_OBJECTS_LINKER + replybody);
-        llSetTimerEvent(10);
+        llSetTimerEvent(refreshseconds);
 
     }
 
@@ -155,7 +162,7 @@ state ready {
 
         requesthttp = llHTTPRequest(sloodleserverroot + SLOODLE_CONFIRM_ACTIVE_OBJECTS_LINKER, [HTTP_METHOD, "POST", HTTP_MIMETYPE, "application/x-www-form-urlencoded"], body);
        // llOwnerSay("on timer requestiong " +sloodleserverroot + SLOODLE_CONFIRM_ACTIVE_OBJECTS_LINKER + body);
-        llSetTimerEvent(10);
+        llSetTimerEvent(30); // In case the request fails
         
     } 
                             
