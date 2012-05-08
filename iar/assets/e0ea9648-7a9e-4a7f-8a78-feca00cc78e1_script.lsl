@@ -62,7 +62,7 @@ default
 {
     state_entry()
     {        
-    llOwnerSay("waiging for config");
+   // llOwnerSay("waiting for config");
     }
 
     // allow for reconfiguration without resetting
@@ -103,7 +103,7 @@ state ready {
 
     state_entry()
     {
-        llOwnerSay("config rez status confirmer ready");
+       // llOwnerSay("config rez status confirmer ready");
         llSetTimerEvent(10);
     }
 

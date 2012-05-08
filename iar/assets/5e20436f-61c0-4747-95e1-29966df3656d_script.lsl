@@ -159,6 +159,10 @@ state ready {
 //llOwnerSay("requested config with body "+body); 
           httpchat = llHTTPRequest(sloodleserverroot + SLOODLE_HTTP_IN_REQUEST_LINKER, [HTTP_METHOD, "POST", HTTP_MIMETYPE, "application/x-www-form-urlencoded"], body);    
    }
+
+    /*
+    // Edmund Edgar, 2012-05-08: There's no situation where we can give useful feedback without drowning the user, 
+    // ...so we'll just ignore the response and hope everything worked.
     http_response(key request_id, integer status, list metadata, string body) {
         // Split the data up into lines
         list lines = llParseStringKeepNulls(body, ["\n"], []);  
@@ -183,10 +187,9 @@ state ready {
             } else {
                 llOwnerSay("Unknown Error: "+(string)statuscode+" "+llKey2Name(objKey)); 
             }
-        }
-
-        
+        }        
     }      
+    */
 
     // allow for reconfiguration without resetting
      link_message( integer sender_num, integer num, string str, key id)
