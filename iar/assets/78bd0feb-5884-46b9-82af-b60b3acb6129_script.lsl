@@ -25,7 +25,8 @@ string SLOODLE_HTTP_IN_REQUEST_LINKER = "/mod/sloodle/classroom/httpin_config_li
 string SLOODLE_HTTP_IN_UPDATE_LINKER = "/mod/sloodle/classroom/httpin_url_update_linker.php";
 string SLOODLE_PING_LINKER = "/mod/sloodle/classroom/active_object_ping_linker.php";
 
-float refreshseconds = 3600.0; // Number of seconds between pings. Some jitter will sometimes be added to prevent killing the server this number of seconds after a sim full of objects starts up. We start with a fairly slow default, but this can be altered by the server when we ping or send out config.
+float PING_DELAY = 3600.0; // Number of seconds between pings. NB This is assumed to by 3600 by Active Object, which will stop trying to send http-in messages to objects older than that.
+float PING_RETRY_DELAY = 600.0; // Number of seconds to wait before retrying a failed ping.
 
 string SLOODLE_EOF = "sloodleeof";
 
@@ -45,7 +46,6 @@ string persistent_config;
 
 integer is_pinging = 0;
 integer is_ping_retry = 0;
-key current_ping_http = NULL_KEY;
 
 move_to_layout_position() {
     
@@ -289,12 +289,6 @@ default{
                     llHTTPResponse(id, 200, "OK"); 
                 }
                 
-                if (llGetListLength(header_line) >= 13) {
-                    if (llList2Float(header_line,12) > 0) {
-                        refreshseconds = llList2Float(header_line,12);
-                    }
-                }                     
-                                
                 string descriptor = "";
                 if (llGetListLength(header_line) > 1) descriptor = llList2String(header_line, 3);
                 integer do_persist = 0;   
@@ -375,10 +369,10 @@ state ready {
     {        
         // llOwnerSay("ready state");
         // llOwnerSay(persistent_config);
-        if (rezzer_uuid != NULL_KEY) {
-            llListen(232323, "", rezzer_uuid, "");   
-        }
+        llListen(232323, "", rezzer_uuid, "");   
     
+        // Ping the server at a random interval of the normal ping delay, so the server doesn't get hit by all objects at once.
+        llSetTimerEvent( llFrand(PING_DELAY) ); 
     } 
 
     listen(integer channel, string name, key id, string message) {
@@ -429,36 +423,23 @@ state ready {
         body += "&sloodlepwd=" + sloodlepwd;
         body += "&sloodleobjuuid=" + (string)llGetKey();
         is_pinging = 1;
-        current_ping_http = llHTTPRequest(sloodleserverroot + SLOODLE_PING_LINKER, [HTTP_METHOD, "POST", HTTP_MIMETYPE, "application/x-www-form-urlencoded"], body);
+        llHTTPRequest(sloodleserverroot + SLOODLE_PING_LINKER, [HTTP_METHOD, "POST", HTTP_MIMETYPE, "application/x-www-form-urlencoded"], body);
     }
 
     http_response( key request_id, integer status, list metadata, string body ){ 
-
-        if (request_id != current_ping_http) {
-            return;
-        }    
-
-        list lines = llParseStringKeepNulls(body, ["\n"], []);
-        list statusfields = llParseStringKeepNulls( llList2String(lines,0), ["|"], [] );
-        
-        if (llGetListLength(statusfields) >= 12) {
-            if (llList2Float(statusfields,12) > 0) {
-                refreshseconds = llList2Float(statusfields,12);
-            }
-        }   
 
         is_pinging = 0;
         if (status == 200) {
             if (is_ping_retry == 1) {
                 // Reintroduce the randomness we may have lost if the server went down.
-                llSetTimerEvent(llFrand(refreshseconds));
+                llSetTimerEvent(llFrand(PING_DELAY));
             } else {
-                llSetTimerEvent(refreshseconds);
+                llSetTimerEvent(PING_DELAY);
             }
             is_ping_retry = 0;
         } else {
             is_ping_retry = 1;
-            llSetTimerEvent(llFrand(refreshseconds));
+            llSetTimerEvent(PING_RETRY_DELAY);
         } 
 
     }
@@ -541,13 +522,11 @@ state ready {
                 // This is the end of the configuration data
                 llSleep(0.2);
                 sloodle_tell_other_scripts(SLOODLE_EOF, 0, id);
-                
-                // Start pinging, with jitter                
-                llSetTimerEvent(llFrand(refreshseconds));
                                                                        
           }//endif 
      }//http
 
+    // TODO: Need a changed event for region etc to get a new url
     changed(integer change) {
         if ( (change & CHANGED_REGION_START) || (change & CHANGED_REGION ) ) {
             //Request new URL

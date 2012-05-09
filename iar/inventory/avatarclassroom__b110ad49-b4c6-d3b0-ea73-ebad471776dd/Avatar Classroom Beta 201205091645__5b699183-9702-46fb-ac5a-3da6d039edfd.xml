@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-16"?>
 <InventoryItem>
-  <Name>Avatar Classroom Beta 201205081950</Name>
-  <ID>df2b95ec-a229-42bc-b1e8-c8260e475679</ID>
+  <Name>Avatar Classroom Beta 201205091645</Name>
+  <ID>5b699183-9702-46fb-ac5a-3da6d039edfd</ID>
   <InvType>6</InvType>
   <CreatorUUID>ospa:n=Avatar Classroom</CreatorUUID>
-  <CreationDate>1336474265</CreationDate>
+  <CreationDate>1336549414</CreationDate>
   <Owner>f3e47e81-3983-4c3a-869d-7a9a4b62aa94</Owner>
   <Description>http://www.avatarclassroom.com</Description>
   <AssetType>6</AssetType>
-  <AssetID>a7226a24-6af4-4f6b-a6d1-ee6cc250cea5</AssetID>
+  <AssetID>a7e0db68-0cb2-4d76-8cdd-37c2fbc8daf6</AssetID>
   <SaleType>0</SaleType>
   <SalePrice>10</SalePrice>
   <BasePermissions>581632</BasePermissions>
