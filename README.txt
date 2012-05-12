@@ -1,7 +1,11 @@
-avatarclassroom_opensim_iar
-===========================
+Avatar Classroom IAR
+http://www.avatarclassroom.com
 
 This repo is for the IAR archive of the Avatar Classroom rezzer.
+It is provided by Paul Preibisch and Edmund Edgar
+
+Source code (in this case LSL scripts) is shared with SLOODLE and available under the GPL 3. 
+However we reserve the right to include 3D objects and graphical elements assets with different licenses.
 
 The contents of the IAR archive is stored in decompressed form.
 To import it into an OpenSim grid, you need to archive it with tar / gzip.
@@ -15,9 +19,6 @@ https://github.com/sloodle/sloodle_opensim_iar
 Some scripts are provided for synchronizing with SLOODLE at:
 https://github.com/sloodle/sloodle_development_tools/tree/master/opensim_sync
 
-IAR for Avatar Classroom, provided by Paul Preibisch and Edmund Edgar
-Please note that although source code (LSL scripts) are shared with SLOODLE and available under the GPL 3
-...we reserve the right to include graphical elements assets with different licenses.
 
 Examples of usage (also apply to the SLOODLE iar):
 
