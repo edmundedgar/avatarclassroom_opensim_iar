@@ -76,8 +76,10 @@ tail iar/assets/<asset id>.lsl
 
 # If you want all the SLOODLE versions, you can commit the changes as they are and re-import the IAR.
 
-# If you want your IAR version to go into SLOODLE, copy it over to SLOODLE and commit.
-# You should then  rerun the syncSVNScriptsToOar.sh step in case you have more than one of the same script in the IAR, and forgot to update some of them.
+# If you want your IAR version to go into SLOODLE, restore your IAR version with:
+git checkout iar/assets/<asset id>.lsl
+# ...then copy it over to SLOODLE and commit there.
+# You should then rerun the syncSVNScriptsToOar.sh step in case you have more than one of the same script in the IAR, and forgot to update some of them.
 
 # Once complete, do:
 git add .
