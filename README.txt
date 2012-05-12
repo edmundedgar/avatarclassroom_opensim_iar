@@ -33,6 +33,12 @@ tar zcvf /tmp/avatarclassroom.iar archive.xml inventory/* assets/*
 # In the OpenSim console, you should now be able to load the archive:
 load iar Your Avatar / yourpassw0rd /tmp/avatarclassroom.iar
 
+# Note that even after you reload the archive, OpenSim sometimes uses cached versions.
+# To avoid this:
+# 1) Clear your viewer cache.
+# 2) Delete the contents of bin/ScriptEngines
+# 3) If possible, delete the relevant assets from the database.
+
 
 To recreate this iar and update the Git repo, do the following:
 
@@ -55,3 +61,26 @@ git commit -a
 git push 
 
 
+# Syncing with SLOODLE:
+
+# The following assumes you have the sloodle_development_tools repo and the moodle-mod_sloodle repo checked out next to this repo.
+
+# Having exported an IAR and committed it (see above), you can do:
+find iar/ -name '*.lsl' -exec ../sloodle_development_tools/opensim_sync/syncSVNScriptsToOar.sh {} \;
+# This will overwrite any scripts in your IAR with the versions that SLOODLE thinks it has.
+
+# You can check which assets have changed with 
+git diff
+# ...and check what the changed scripts correspond to with 
+tail iar/assets/<asset id>.lsl
+
+# If you want all the SLOODLE versions, you can commit the changes as they are and re-import the IAR.
+
+# If you want your IAR version to go into SLOODLE, copy it over to SLOODLE and commit.
+# You should then  rerun the syncSVNScriptsToOar.sh step in case you have more than one of the same script in the IAR, and forgot to update some of them.
+
+# Once complete, do:
+git add .
+git commit -a
+git push 
+# ...then reimport the IAR.
