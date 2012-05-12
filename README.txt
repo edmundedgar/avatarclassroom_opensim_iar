@@ -25,7 +25,7 @@ Examples of usage (also apply to the SLOODLE iar):
 # Go into the directory containing the IAR. 
 cd iar/
 
-# Archive the contents as a file called /tmp/sloodle.iar.
+# Archive the contents as a file called /tmp/avatarclassroom.iar.
 # NB OpenSim may choke on the archive unless the files are archived in the specified order.
 # Also it prefers the directory/* formulation to avoid spurious errors.
 tar zcvf /tmp/avatarclassroom.iar archive.xml inventory/* assets/*
@@ -48,7 +48,7 @@ To recreate this iar and update the Git repo, do the following:
 mkdir /tmp/iar/export
 
 # In the OpenSim console, export the iar: 
-save iar Your Avatar /iar/export/sloodle/ yourpassw0rd /tmp/iar/export/sloodle.iar
+save iar Your Avatar /iar/export/sloodle/ yourpassw0rd /tmp/iar/export/avatarclassroom.iar
 
 # Remove the contents of the current iar directory, and unpack the new iar instead.
 rm -rf iar/*
