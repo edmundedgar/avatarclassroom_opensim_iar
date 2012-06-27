@@ -136,5 +136,5 @@ default
            
     }
    
-// Please leave the following line intact to show where the script lives in Subversion:
-// SLOODLE LSL Script Subversion Location: mod/furniture-1.0/objects/twitterwall/assets/twitterwall.lslp
+// Please leave the following line intact to show where the script lives in Git:
+// SLOODLE LSL Script Git Location: mod/furniture-1.0/objects/twitterwall/assets/twitterwall.lslp

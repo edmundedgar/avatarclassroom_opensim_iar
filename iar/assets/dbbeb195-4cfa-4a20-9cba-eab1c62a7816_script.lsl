@@ -103,5 +103,5 @@ default {
        }
         
 }
-// Please leave the following line intact to show where the script lives in Subversion:
-// SLOODLE LSL Script Subversion Location: mod/gaming-1.0/objects/shark/assets/fricken_laser_beams.lslp 
+// Please leave the following line intact to show where the script lives in Git:
+// SLOODLE LSL Script Git Location: mod/gaming-1.0/objects/shark/assets/fricken_laser_beams.lslp 

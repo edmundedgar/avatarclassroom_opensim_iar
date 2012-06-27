@@ -391,6 +391,6 @@ default
     }
 }
 
-// Please leave the following line intact to show where the script lives in Subversion:
-// SLOODLE LSL Script Subversion Location: assets/assets/lang/en/sloodle_translation_en.lslpp 
+// Please leave the following line intact to show where the script lives in Git:
+// SLOODLE LSL Script Git Location: assets/assets/lang/en/sloodle_translation_en.lslpp 
 

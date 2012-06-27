@@ -178,5 +178,5 @@ default{
     }
 }
 
-// Please leave the following line intact to show where the script lives in Subversion:
-// SLOODLE LSL Script Subversion Location: mod/building-1.0/objects/avatarclassroomfloors234/assets/hot_floor.lslp
+// Please leave the following line intact to show where the script lives in Git:
+// SLOODLE LSL Script Git Location: mod/building-1.0/objects/avatarclassroomfloors234/assets/hot_floor.lslp
