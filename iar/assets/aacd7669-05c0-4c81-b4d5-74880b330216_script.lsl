@@ -328,4 +328,4 @@ default
     }
 }
 // Please leave the following line intact to show where the script lives in Git:
-// SLOODLE LSL Script Git Location: mod/pwreset-1.0/objects/default/assets/lang/en/sloodle_translation_pwreset_en.lslp
+// SLOODLE LSL Script Git Location: mod/pwreset-1.0/objects/default/assets/lang/en/sloodle_translation_pwreset_en.lslp 
