@@ -1,3 +1,6 @@
+//
+// The line above should be left blank to avoid script errors in OpenSim.
+
 /*
 *  Part of the Sloodle project (www.sloodle.org)
 *
@@ -134,6 +137,7 @@ default{
     }
     
     on_rez(integer r){
+    llSetText("", <0,0,0>,1);
         llResetScript();
     }
     touch_start(integer num_detected) {
@@ -173,7 +177,6 @@ default{
         llMessageLinked(LINK_SET, -399, CLOSE_DOOR, NULL_KEY);
     }
 }
-
 
 // Please leave the following line intact to show where the script lives in Subversion:
 // SLOODLE LSL Script Subversion Location: mod/building-1.0/object_scripts/hot_floor.lsl
