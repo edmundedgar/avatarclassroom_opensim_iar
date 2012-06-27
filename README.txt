@@ -66,7 +66,7 @@ git push
 # The following assumes you have the sloodle_development_tools repo and the moodle-mod_sloodle repo checked out next to this repo.
 
 # Having exported an IAR and committed it (see above), you can do:
-find iar/ -name '*.lsl' -exec ../sloodle_development_tools/opensim_sync/syncSVNScriptsToOar.sh {} \;
+find iar/ -name '*.lsl' -exec ../sloodle_development_tools/opensim_sync/syncGITScriptsToIAR.sh {} \;
 # This will overwrite any scripts in your IAR with the versions that SLOODLE thinks it has.
 
 # You can check which assets have changed with 
@@ -79,7 +79,7 @@ tail iar/assets/<asset id>.lsl
 # If you want your IAR version to go into SLOODLE, restore your IAR version with:
 git checkout iar/assets/<asset id>.lsl
 # ...then copy it over to SLOODLE and commit there.
-# You should then rerun the syncSVNScriptsToOar.sh step in case you have more than one of the same script in the IAR, and forgot to update some of them.
+# You should then rerun the syncGITScriptsToIAR.sh step in case you have more than one of the same script in the IAR, and forgot to update some of them.
 
 # Once complete, do:
 git add .
