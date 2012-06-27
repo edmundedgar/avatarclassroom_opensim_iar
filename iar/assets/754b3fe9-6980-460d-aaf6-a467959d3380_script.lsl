@@ -76,4 +76,4 @@ default {
 }
 
 // Please leave the following line intact to show where the script lives in Subversion:
-// SLOODLE LSL Script Subversion Location: mod/gaming-1.0/object_scripts/sharks/bloodbath.lsl 
+// SLOODLE LSL Script Subversion Location: mod/gaming-1.0/objects/shark/assets/bloodbath.lslp 
