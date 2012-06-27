@@ -335,4 +335,4 @@ default
     }
 }
 // Please leave the following line intact to show where the script lives in Git:
-// SLOODLE LSL Script Git Location: mod/presenter-1.0/objects/default/assets/mod/presenter-1.0/objects/default/assets/lang/en/sloodle_translation_presenter_en.lslpp 
+// SLOODLE LSL Script Git Location: mod/presenter-1.0/objects/default/assets/lang/en/sloodle_translation_presenter_en.lslp

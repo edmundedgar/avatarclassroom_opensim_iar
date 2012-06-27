@@ -336,4 +336,4 @@ default
     }
 }
 // Please leave the following line intact to show where the script lives in Git:
-// SLOODLE LSL Script Git Location: mod/chat-1.0/objects/default/assets/mod/chat-1.0/objects/default/assets/lang/en/sloodle_translation_webintercom_en.lslpp 
+// SLOODLE LSL Script Git Location: mod/chat-1.0/objects/default/assets/lang/en/sloodle_translation_webintercom_en.lslp

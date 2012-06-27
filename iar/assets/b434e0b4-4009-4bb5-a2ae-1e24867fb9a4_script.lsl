@@ -392,5 +392,5 @@ default
 }
 
 // Please leave the following line intact to show where the script lives in Git:
-// SLOODLE LSL Script Git Location: assets/assets/lang/en/sloodle_translation_en.lslpp 
+// SLOODLE LSL Script Git Location: assets/lang/en/sloodle_translation_en.lslp
 

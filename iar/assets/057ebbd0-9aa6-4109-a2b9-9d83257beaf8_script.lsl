@@ -332,4 +332,4 @@ default
     }
 }
 // Please leave the following line intact to show where the script lives in Git:
-// SLOODLE LSL Script Git Location: mod/regenrolbooth-1.0/objects/default/assets/mod/regenrolbooth-1.0/objects/default/assets/lang/en/sloodle_translation_regenrol_en.lslpp 
+// SLOODLE LSL Script Git Location: mod/regenrolbooth-1.0/objects/default/assets/lang/en/sloodle_translation_regenrol_en.lslp

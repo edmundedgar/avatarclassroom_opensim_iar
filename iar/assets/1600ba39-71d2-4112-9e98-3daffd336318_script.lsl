@@ -331,4 +331,4 @@ default
     }
 }
 // Please leave the following line intact to show where the script lives in Git:
-// SLOODLE LSL Script Git Location: mod/distributor-1.0/objects/default/assets/mod/distributor-1.0/objects/default/assets/lang/en/sloodle_translation_distributor_en.lslpp 
+// SLOODLE LSL Script Git Location: mod/distributor-1.0/objects/default/assets/mod/lang/en/sloodle_translation_distributor_en.lslp
